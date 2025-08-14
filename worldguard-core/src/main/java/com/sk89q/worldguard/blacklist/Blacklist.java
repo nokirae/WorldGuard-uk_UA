@@ -158,14 +158,14 @@ public class Blacklist {
                             builder.add(matcher, entry);
                             currentEntries.add(entry);
                         } catch (TargetMatcherParseException e) {
-                            log.log(Level.WARNING, "Could not parse a block/item heading: " + e.getMessage());
+                            log.log(Level.WARNING, "Не вдалося проаналізувати заголовок блоку/предмента: " + e.getMessage());
                         }
                     }
                 } else if (currentEntries != null) {
                     String[] parts = line.split("=");
 
                     if (parts.length == 1) {
-                        log.log(Level.WARNING, "Found option with no value " + file.getName() + " for '" + line + "'");
+                        log.log(Level.WARNING, "Знайдено опцію без значення " + file.getName() + " у '" + line + "'");
                         continue;
                     }
 
@@ -202,11 +202,11 @@ public class Blacklist {
                     }
 
                     if (unknownOption) {
-                        log.log(Level.WARNING, "Unknown option '" + parts[0] + "' in " + file.getName() + " for '" + line + "'");
+                        log.log(Level.WARNING, "Невідомий варіант '" + parts[0] + "' в " + file.getName() + " у '" + line + "'");
                     }
                 } else {
-                    log.log(Level.WARNING, "Found option with no heading "
-                            + file.getName() + " for '" + line + "'");
+                    log.log(Level.WARNING, "Знайдено варіант без заголовка "
+                            + file.getName() + " у '" + line + "'");
                 }
             }
 
@@ -232,7 +232,7 @@ public class Blacklist {
             }
 
             if (!found) {
-                log.log(Level.WARNING, "Unknown blacklist action: " + name);
+                log.log(Level.WARNING, "Невідома дія чорного списку: " + name);
             }
         }
 
