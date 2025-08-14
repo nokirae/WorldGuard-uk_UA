@@ -48,7 +48,7 @@ public class MemberCommands extends RegionCommandsBase {
     @Command(aliases = {"addmember", "addmember", "addmem", "am"},
             usage = "<id> <members...>",
             flags = "nw:",
-            desc = "Add a member to a region",
+            desc = "Додати учасника до регіону",
             min = 2)
     public void addMember(CommandContext args, Actor sender) throws CommandException {
         warnAboutSaveFailures(sender);
@@ -69,18 +69,18 @@ public class MemberCommands extends RegionCommandsBase {
         resolver.setLocatorPolicy(args.hasFlag('n') ? UserLocatorPolicy.NAME_ONLY : UserLocatorPolicy.UUID_ONLY);
 
 
-        final String description = String.format("Adding members to the region '%s' on '%s'", region.getId(), world.getName());
+        final String description = String.format("Додавання учасників до регіону '%s' в '%s'", region.getId(), world.getName());
         AsyncCommandBuilder.wrap(resolver, sender)
                 .registerWithSupervisor(worldGuard.getSupervisor(), description)
-                .onSuccess(String.format("Region '%s' updated with new members.", region.getId()), region.getMembers()::addAll)
-                .onFailure("Failed to add new members", worldGuard.getExceptionConverter())
+                .onSuccess(String.format("Регіон '%s' оновлено з новими учасниками.", region.getId()), region.getMembers()::addAll)
+                .onFailure("Не вдалося додати нових учасників", worldGuard.getExceptionConverter())
                 .buildAndExec(worldGuard.getExecutorService());
     }
 
     @Command(aliases = {"addowner", "addowner", "ao"},
             usage = "<id> <owners...>",
             flags = "nw:",
-            desc = "Add an owner to a region",
+            desc = "Додати власника до регіону",
             min = 2)
     public void addOwner(CommandContext args, Actor sender) throws CommandException {
         warnAboutSaveFailures(sender);
@@ -103,11 +103,11 @@ public class MemberCommands extends RegionCommandsBase {
         resolver.setLocatorPolicy(args.hasFlag('n') ? UserLocatorPolicy.NAME_ONLY : UserLocatorPolicy.UUID_ONLY);
 
 
-        final String description = String.format("Adding owners to the region '%s' on '%s'", region.getId(), world.getName());
+        final String description = String.format("Додавання власників до регіону '%s' в '%s'", region.getId(), world.getName());
         AsyncCommandBuilder.wrap(checkedAddOwners(sender, manager, region, world, resolver), sender)
                 .registerWithSupervisor(worldGuard.getSupervisor(), description)
-                .onSuccess(String.format("Region '%s' updated with new owners.", region.getId()), region.getOwners()::addAll)
-                .onFailure("Failed to add new owners", worldGuard.getExceptionConverter())
+                .onSuccess(String.format("Регіон '%s' оновлено з новими власниками.", region.getId()), region.getOwners()::addAll)
+                .onFailure("Не вдалося додати нових власників", worldGuard.getExceptionConverter())
                 .buildAndExec(worldGuard.getExecutorService());
     }
 
@@ -123,7 +123,7 @@ public class MemberCommands extends RegionCommandsBase {
                             .get(world).getMaxRegionCount(player);
                     if (maxRegionCount >= 0 && manager.getRegionCountOfPlayer(player)
                             >= maxRegionCount) {
-                        throw new CommandException("You already own the maximum allowed amount of regions.");
+                        throw new CommandException("Ви вже володієте максимально дозволеною кількістю регіонів.");
                     }
                 }
             }
@@ -147,7 +147,7 @@ public class MemberCommands extends RegionCommandsBase {
     @Command(aliases = {"removemember", "remmember", "removemem", "remmem", "rm"},
             usage = "<id> <owners...>",
             flags = "naw:",
-            desc = "Remove an owner to a region",
+            desc = "Видалити власника з регіону",
             min = 1)
     public void removeMember(CommandContext args, Actor sender) throws CommandException {
         warnAboutSaveFailures(sender);
@@ -167,7 +167,7 @@ public class MemberCommands extends RegionCommandsBase {
             callable = region::getMembers;
         } else {
             if (args.argsLength() < 2) {
-                throw new CommandException("List some names to remove, or use -a to remove all.");
+                throw new CommandException("Вкажіть імена, які потрібно видалити, або використовуйте -a, щоб видалити всі.");
             }
 
             // Resolve members asynchronously
@@ -178,19 +178,19 @@ public class MemberCommands extends RegionCommandsBase {
             callable = resolver;
         }
 
-        final String description = String.format("Removing members from the region '%s' on '%s'", region.getId(), world.getName());
+        final String description = String.format("Видалення учасників з регіону '%s' в '%s'", region.getId(), world.getName());
         AsyncCommandBuilder.wrap(callable, sender)
                 .registerWithSupervisor(worldGuard.getSupervisor(), description)
-                .sendMessageAfterDelay("(Please wait... querying player names...)")
-                .onSuccess(String.format("Region '%s' updated with members removed.", region.getId()), region.getMembers()::removeAll)
-                .onFailure("Failed to remove members", worldGuard.getExceptionConverter())
+                .sendMessageAfterDelay("(Будь ласка, зачекайте... запит імен учасників...)")
+                .onSuccess(String.format("Регіон '%s' оновлено з видаленням учасників.", region.getId()), region.getMembers()::removeAll)
+                .onFailure("Не вдалося видалити учасників", worldGuard.getExceptionConverter())
                 .buildAndExec(worldGuard.getExecutorService());
     }
 
     @Command(aliases = {"removeowner", "remowner", "ro"},
             usage = "<id> <owners...>",
             flags = "naw:",
-            desc = "Remove an owner to a region",
+            desc = "Видалити власника з регіону",
             min = 1)
     public void removeOwner(CommandContext args, Actor sender) throws CommandException {
         warnAboutSaveFailures(sender);
@@ -210,7 +210,7 @@ public class MemberCommands extends RegionCommandsBase {
             callable = region::getOwners;
         } else {
             if (args.argsLength() < 2) {
-                throw new CommandException("List some names to remove, or use -a to remove all.");
+                throw new CommandException("Вкажіть імена, які потрібно видалити, або використовуйте -a, щоб видалити всі.");
             }
 
             // Resolve owners asynchronously
@@ -221,12 +221,12 @@ public class MemberCommands extends RegionCommandsBase {
             callable = resolver;
         }
 
-        final String description = String.format("Removing owners from the region '%s' on '%s'", region.getId(), world.getName());
+        final String description = String.format("Видалення власників з регіону '%s' в '%s'", region.getId(), world.getName());
         AsyncCommandBuilder.wrap(callable, sender)
                 .registerWithSupervisor(worldGuard.getSupervisor(), description)
-                .sendMessageAfterDelay("(Please wait... querying player names...)")
-                .onSuccess(String.format("Region '%s' updated with owners removed.", region.getId()), region.getOwners()::removeAll)
-                .onFailure("Failed to remove owners", worldGuard.getExceptionConverter())
+                .sendMessageAfterDelay("(Будь ласка, зачекайте... запит імен учасників...)")
+                .onSuccess(String.format("Регіон '%s' оновлено з видаленням власників.", region.getId()), region.getOwners()::removeAll)
+                .onFailure("Не вдалося видалити власників", worldGuard.getExceptionConverter())
                 .buildAndExec(worldGuard.getExecutorService());
     }
 }
