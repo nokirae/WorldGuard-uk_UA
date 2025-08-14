@@ -36,7 +36,7 @@ public final class PaperProfileService extends SingleRequestService {
 
     private PaperProfileService() {
         if (!PaperLib.isPaper()) {
-            throw new IllegalStateException("Attempt to access PaperProfileService on non-Paper server.");
+            throw new IllegalStateException("Спроба доступу PaperProfileService на не-Paper сервері.");
         }
     }
 
