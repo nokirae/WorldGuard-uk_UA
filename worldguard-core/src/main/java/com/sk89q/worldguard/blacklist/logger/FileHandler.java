@@ -209,7 +209,7 @@ public class FileHandler implements LoggerHandler {
             }
 
         } catch (IOException e) {
-            logger.log(Level.WARNING, "Failed to log blacklist event to '"
+            logger.log(Level.WARNING, "Не вдалося зареєструвати подію чорного списку в '"
                     + path + "': " + e.getMessage());
         }
     }
@@ -225,7 +225,7 @@ public class FileHandler implements LoggerHandler {
     }
 
     private void logEvent(BlacklistEvent event, String text, Target target, BlockVector3 pos, String comment) {
-        log(event.getPlayer(), "Tried to " + text + " " + target.getFriendlyName() + " " + getCoordinates(pos), comment);
+        log(event.getPlayer(), "Намагається " + text + " " + target.getFriendlyName() + " " + getCoordinates(pos), comment);
     }
 
     @Override
