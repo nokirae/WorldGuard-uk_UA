@@ -30,18 +30,18 @@ import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 public class ApplicableRegionsReport extends DataReport {
 
     public ApplicableRegionsReport(LocalPlayer player) {
-        super("Applicable regions");
+        super("Застосовні регіони");
         BlockVector3 position = player.getBlockIn().toVector().toBlockPoint();
-        append("Location", player.getWorld().getName() + " @ " + position);
+        append("Позиція", player.getWorld().getName() + " @ " + position);
         RegionManager mgr = WorldGuard.getInstance().getPlatform().getRegionContainer().get(player.getWorld());
         if (mgr == null) {
-            append("Regions", "Disabled for current world");
+            append("Регіони", "Вимкнено для поточного світу");
         } else {
             ApplicableRegionSet rgs = mgr.getApplicableRegions(position);
             if (rgs.getRegions().isEmpty()) {
-                append("Regions", "None");
+                append("Регіони", "Немає");
             } else {
-                DataReport regions = new DataReport("Regions");
+                DataReport regions = new DataReport("Регіони");
                 for (ProtectedRegion region : rgs.getRegions()) {
                     boolean inherited = !region.contains(position);
                     regions.append(region.getId() + (inherited ? "*" : ""), new RegionReport(region));
