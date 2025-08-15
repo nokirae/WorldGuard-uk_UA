@@ -1,39 +1,39 @@
-Compiling
+Компіляція
 =========
 
-You can compile WorldGuard as long as you have some version of Java greater than or equal to 21 installed. 
-Gradle will download JDK 21 specifically if needed, but it needs some version of Java to bootstrap from.
+Ви можете скомпілювати WorldGuard, якщо у вас встановлена версія Java, що дорівнює або перевищує 21.
+Gradle завантажить JDK 21, якщо це буде потрібно, але для запуску йому потрібна якась версія Java.
 
-The build process uses Gradle, which you do *not* need to download. WorldGuard is a multi-module project with three modules:
+Процес побудови використовує Gradle, який вам *не* потрібно завантажувати. WorldGuard — це багатомодульний проект, що складається з трьох модулів:
 
-* `worldguard-core` contains the WorldGuard API
-* `worldguard-bukkit` is the Bukkit plugin
-* `worldguard-libs` contains library relocations
+* `worldguard-core` містить WorldGuard API
+* `worldguard-bukkit` це Bukkit плагін
+* `worldguard-libs` містить перевизначення бібліотек
 
-## To compile...
+## Для компілювання...
 
-### On Windows
+### На Windows
 
-1. **Shift** + **right click** the folder with WorldGuard's files and click "Open PowerShell window here".
+1. **Shift** + **правий клік** папку з файлами WorldGuard і натисніть "Відкрити вікно PowerShell тут".
 2. `gradlew build`
 
-### On Linux, BSD, or Mac OS X
+### На Linux, BSD, або Mac OS X
 
-1. In your terminal, navigate to the folder with WorldGuard's files (`cd /folder/of/worldguard/files`)
+1. У терміналі перейдіть до директорії з файлами WorldGuard (`cd /folder/of/worldguard/files`)
 2. `./gradlew build`
 
-## Then you will find...
+## Тоді ви знайдете...
 
-You will find:
+Ви знайдете:
 
-* The core WorldGuard API in **worldguard-core/build/libs**
-* WorldGuard for Bukkit in **worldguard-bukkit/build/libs**
+* Ядро WorldGuard API в **worldguard-core/build/libs**
+* WorldGuard для Bukkit в **worldguard-bukkit/build/libs**
 
-If you want to use WorldGuard, use the `-dist` version.
+Якщо ви хочете використовувати WorldGuard, використовуйте версію `-dist`.
 
-(The -dist version includes WorldGuard + necessary libraries.)
+(Версія -dist включає WorldGuard + необхідні бібліотеки.)
 
-## Other commands
+## Інші команди
 
-* `gradlew idea` will generate an [IntelliJ IDEA](http://www.jetbrains.com/idea/) module for each folder.
-* `gradlew eclipse` will generate an [Eclipse](https://www.eclipse.org/downloads/) project for each folder.
+* `gradlew idea` створить [IntelliJ IDEA](http://www.jetbrains.com/idea/) модуль для кожної папки.
+* `gradlew eclipse` створить [Eclipse](https://www.eclipse.org/downloads/) проєкт для кожної папки.
