@@ -34,14 +34,14 @@ public class DatapackReport extends DataReport {
 
         Collection<Datapack> packs = Bukkit.getDatapackManager().getPacks();
 
-        append("Datapack Count", packs.size());
-        append("Datapack Enabled Count", Bukkit.getDatapackManager().getEnabledPacks().size());
+        append("Кількість датапаків", packs.size());
+        append("Кількість увімкнених датапаків", Bukkit.getDatapackManager().getEnabledPacks().size());
 
         for (Datapack pack : packs) {
-            DataReport report = new DataReport("DataPack: " + pack.getName());
-            report.append("Enabled?", pack.isEnabled());
-            report.append("Name", pack.getName());
-            report.append("Compatibility", pack.getCompatibility().name());
+            DataReport report = new DataReport("Датапак: " + pack.getName());
+            report.append("Увімкнено?", pack.isEnabled());
+            report.append("Назва", pack.getName());
+            report.append("Сумісність", pack.getCompatibility().name());
             append(report.getTitle(), report);
         }
     }
