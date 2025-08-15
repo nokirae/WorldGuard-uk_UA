@@ -136,30 +136,30 @@ public class ClassSourceValidator {
         StringBuilder builder = new StringBuilder("\n");
 
         builder.append(SEPARATOR_LINE).append("\n");
-        builder.append("** /!\\    SEVERE WARNING    /!\\\n");
+        builder.append("** /!\\    СЕРЙОЗНЕ ПОПЕРЕДЖЕННЯ    /!\\\n");
         builder.append("** \n");
-        builder.append("** A plugin developer has included a portion of \n");
-        builder.append("** ").append(plugin.getName()).append(" into their own plugin, so rather than using\n");
-        builder.append("** the version of ").append(plugin.getName()).append(" that you downloaded, you\n");
-        builder.append("** will be using a broken mix of old ").append(plugin.getName()).append(" (that came\n");
-        builder.append("** with the plugin) and your downloaded version. THIS MAY\n");
-        builder.append("** SEVERELY BREAK ").append(plugin.getName().toUpperCase(Locale.ROOT)).append(" AND ALL OF ITS FEATURES.\n");
+        builder.append("** Розробник плагіна включив частину \n");
+        builder.append("** ").append(plugin.getName()).append(" у власний плагін, тому замість використання\n");
+        builder.append("** версії ").append(plugin.getName()).append(" яку ви завантажили, ви\n");
+        builder.append("** будете використовувати пошкоджену суміш старих ").append(plugin.getName()).append(" (що прийшли\n");
+        builder.append("** з плагіном) та вашою завантаженою версією. ЦЕ МОЖЕ\n");
+        builder.append("** СЕРЙОЗНО ЗЛАМАТИ ").append(plugin.getName().toUpperCase(Locale.ROOT)).append(" РОБОТУ ВСІХ ЙОГО ФУНКЦІЙ.\n");
         builder.append("**\n");
-        builder.append("** This may have happened because the developer is using\n");
-        builder.append("** the ").append(plugin.getName()).append(" API and thinks that including\n");
-        builder.append("** ").append(plugin.getName()).append(" is necessary. However, it is not!\n");
+        builder.append("** Це могло статися тому, що розробник використовує\n");
+        builder.append("** це ").append(plugin.getName()).append(" API і вважає, що включення\n");
+        builder.append("** ").append(plugin.getName()).append(" необхідно. Однак це не так!\n");
         builder.append("**\n");
-        builder.append("** Here are some files that have been overridden:\n");
+        builder.append("** Ось деякі файли, які були замінені:\n");
         builder.append("** \n");
         for (Map.Entry<Class<?>, Plugin> entry : mismatches.entrySet()) {
             Plugin badPlugin = entry.getValue();
             String url = badPlugin == null
-                    ? "(unknown)"
+                    ? "(невідомо)"
                     : badPlugin.getName() + " (" + badPlugin.getClass().getProtectionDomain().getCodeSource().getLocation() + ")";
-            builder.append("** '").append(entry.getKey().getSimpleName()).append("' came from '").append(url).append("'\n");
+            builder.append("** '").append(entry.getKey().getSimpleName()).append("' походить з '").append(url).append("'\n");
         }
         builder.append("**\n");
-        builder.append("** Please report this to the plugins' developers.\n");
+        builder.append("** Будь ласка, повідомте про це розробникам плагінів.\n");
         builder.append(SEPARATOR_LINE).append("\n");
 
         plugin.getLogger().severe(builder.toString());
