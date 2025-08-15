@@ -44,24 +44,24 @@ public abstract class ConfigurationManager {
     protected static final Logger log = Logger.getLogger(ConfigurationManager.class.getCanonicalName());
 
     static final String CONFIG_HEADER = "#\r\n" +
-            "# WorldGuard's main configuration file\r\n" +
+            "# WorldGuard головний файл конфігурації\r\n" +
             "#\r\n" +
-            "# This is the global configuration file. Anything placed into here will\r\n" +
-            "# be applied to all worlds. However, each world has its own configuration\r\n" +
-            "# file to allow you to replace most settings in here for that world only.\r\n" +
+            "# Це глобальний файл конфігурації. Все, що розміщено тут, буде\r\n" +
+            "# застосовувано до всіх світів. Однак кожен світ має свою власну конфігураційний\r\n" +
+            "# файл, який дозволяє замінити більшість налаштувань тільки для цього світу.\r\n" +
             "#\r\n" +
-            "# About editing this file:\r\n" +
-            "# - DO NOT USE TABS. You MUST use spaces or Bukkit will complain. If\r\n" +
-            "#   you use an editor like Notepad++ (recommended for Windows users), you\r\n" +
-            "#   must configure it to \"replace tabs with spaces.\" In Notepad++, this can\r\n" +
-            "#   be changed in Settings > Preferences > Language Menu.\r\n" +
-            "# - Don't get rid of the indents. They are indented so some entries are\r\n" +
-            "#   in categories (like \"enforce-single-session\" is in the \"protection\"\r\n" +
-            "#   category.\r\n" +
-            "# - If you want to check the format of this file before putting it\r\n" +
-            "#   into WorldGuard, paste it into http://yaml-online-parser.appspot.com/\r\n" +
-            "#   and see if it gives \"ERROR:\".\r\n" +
-            "# - Lines starting with # are comments and so they are ignored.\r\n" +
+            "# Про редагування цього файлу:\r\n" +
+            "# - НЕ ВИКОРИСТОВУЙТЕ ТАБИ. Ви ПОВИННІ використовувати пробіли, інакше Bukkit видасть помилку. Якщо\r\n" +
+            "#   ви використовуєте редактор, такий як Notepad++ (рекомендовано для користувачів Windows), ви\r\n" +
+            "#   маєте налаштувати його на \"replace tabs with spaces.\" В Notepad++, це можна\r\n" +
+            "#   змінити в Settings > Preferences > Language Menu.\r\n" +
+            "# - Не видаляйте відступи. Вони мають відступ, тому що деякі записи є\r\n" +
+            "#   в категоріях (наприклад \"enforce-single-session\" знаходиться в \"protection\"\r\n" +
+            "#   категорії.\r\n" +
+            "# - Якщо ви хочете перевірити формат цього файлу перед тим, як додати його\r\n" +
+            "#   в WorldGuard, вставте його в http://yaml-online-parser.appspot.com/\r\n" +
+            "#   і подивитися, чи це дає результат \"ERROR:\".\r\n" +
+            "# - Рядки, що починаються з # це коментарі, тому вони ігноруються.\r\n" +
             "#\r\n";
 
     public boolean useRegionsCreatureSpawnEvent;
