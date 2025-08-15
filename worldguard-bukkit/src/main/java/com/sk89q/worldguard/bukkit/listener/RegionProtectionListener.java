@@ -565,7 +565,7 @@ public class RegionProtectionListener extends AbstractListener {
                     long now = System.currentTimeMillis();
                     Long lastTime = WGMetadata.getIfPresent(player, DISEMBARK_MESSAGE_KEY, Long.class);
                     if (lastTime == null || now - lastTime >= LAST_MESSAGE_DELAY) {
-                        player.sendMessage("" + ChatColor.GOLD + "Не висаджуйтесь тут!" + ChatColor.GRAY + " Ви не можете повернутися назад.");
+                        player.sendMessage("" + ChatColor.GOLD + "Не висаджуйтесь тут!" + ChatColor.GRAY + " Ви не зможете повернутися назад.");
                         WGMetadata.put(player, DISEMBARK_MESSAGE_KEY, now);
                     }
 
