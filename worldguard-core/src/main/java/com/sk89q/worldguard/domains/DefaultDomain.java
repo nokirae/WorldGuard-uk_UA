@@ -279,7 +279,7 @@ public class DefaultDomain implements Domain, ChangeTracked {
         List<String> output = new ArrayList<>();
 
         for (String name : playerDomain.getPlayers()) {
-            output.add("name:" + name);
+            output.add("особа:" + name);
         }
 
         if (cache != null) {
@@ -311,7 +311,7 @@ public class DefaultDomain implements Domain, ChangeTracked {
     public String toGroupsString() {
         StringBuilder str = new StringBuilder();
         for (Iterator<String> it = groupDomain.getGroups().iterator(); it.hasNext(); ) {
-            str.append("g:");
+            str.append("г:");
             str.append(it.next());
             if (it.hasNext()) {
                 str.append(", ");
@@ -379,7 +379,7 @@ public class DefaultDomain implements Domain, ChangeTracked {
                 builder.append(TextComponent.of(", "));
             }
         }
-        return builder.build().hoverEvent(HoverEvent.of(HoverEvent.Action.SHOW_TEXT, TextComponent.of("Groups")));
+        return builder.build().hoverEvent(HoverEvent.of(HoverEvent.Action.SHOW_TEXT, TextComponent.of("Групи")));
     }
 
     private Component toPlayersComponent(ProfileCache cache) {
@@ -411,14 +411,14 @@ public class DefaultDomain implements Domain, ChangeTracked {
             final UUID uuid = profileMap.get(name);
             if (uuid == null) {
                 return TextComponent.of(name, TextColor.YELLOW)
-                        .hoverEvent(HoverEvent.of(HoverEvent.Action.SHOW_TEXT, TextComponent.of("Name only", TextColor.GRAY)
-                            .append(TextComponent.newline()).append(TextComponent.of("Click to copy"))))
+                        .hoverEvent(HoverEvent.of(HoverEvent.Action.SHOW_TEXT, TextComponent.of("Тільки ім'я", TextColor.GRAY)
+                            .append(TextComponent.newline()).append(TextComponent.of("Натисніть, щоб скопіювати"))))
                         .clickEvent(ClickEvent.of(ClickEvent.Action.COPY_TO_CLIPBOARD, name));
             } else {
                 return TextComponent.of(name, TextColor.YELLOW)
-                        .hoverEvent(HoverEvent.of(HoverEvent.Action.SHOW_TEXT, TextComponent.of("Last known name of uuid: ", TextColor.GRAY)
+                        .hoverEvent(HoverEvent.of(HoverEvent.Action.SHOW_TEXT, TextComponent.of("Останнє відоме ім'я uuid: ", TextColor.GRAY)
                             .append(TextComponent.of(uuid.toString(), TextColor.WHITE))
-                            .append(TextComponent.newline()).append(TextComponent.of("Click to copy"))))
+                            .append(TextComponent.newline()).append(TextComponent.of("Натисніть, щоб скопіювати"))))
                         .clickEvent(ClickEvent.of(ClickEvent.Action.COPY_TO_CLIPBOARD, uuid.toString()));
             }
         }).iterator();
@@ -430,11 +430,11 @@ public class DefaultDomain implements Domain, ChangeTracked {
         }
 
         if (!uuids.isEmpty()) {
-            builder.append(TextComponent.of(uuids.size() + " unknown uuid" + (uuids.size() == 1 ? "" : "s"), TextColor.GRAY)
-                    .hoverEvent(HoverEvent.of(HoverEvent.Action.SHOW_TEXT, TextComponent.of("Unable to resolve the name for:", TextColor.GRAY)
+            builder.append(TextComponent.of(uuids.size() + " невідомий uuid" + (uuids.size() == 1 ? "" : "s"), TextColor.GRAY)
+                    .hoverEvent(HoverEvent.of(HoverEvent.Action.SHOW_TEXT, TextComponent.of("Неможливо визначити ім'я для:", TextColor.GRAY)
                         .append(TextComponent.newline())
                         .append(TextComponent.of(String.join("\n", uuids), TextColor.WHITE))
-                        .append(TextComponent.newline().append(TextComponent.of("Click to copy")))))
+                        .append(TextComponent.newline().append(TextComponent.of("Натисніть, щоб скопіювати")))))
                     .clickEvent(ClickEvent.of(ClickEvent.Action.COPY_TO_CLIPBOARD, String.join(",", uuids))));
         }
 
