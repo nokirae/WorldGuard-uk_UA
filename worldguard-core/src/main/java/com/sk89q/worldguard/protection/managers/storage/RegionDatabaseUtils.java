@@ -61,7 +61,7 @@ public final class RegionDatabaseUtils {
                     log.warning("Виявлено циклічне успадкування! Неможливо встановити батьківство '" + target + "' для батьківського '" + parent.getId() + "'");
                 }
             } else {
-                log.warning("Unknown region parent: " + entry.getValue());
+                log.warning("Невідомий батьківський регіон: " + entry.getValue());
             }
         }
     }
