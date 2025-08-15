@@ -54,15 +54,15 @@ public class SchedulerReport extends DataReport {
 
         List<BukkitTask> tasks = Bukkit.getServer().getScheduler().getPendingTasks();
 
-        append("Pending Task Count", tasks.size());
+        append("Кількість завдань в очікуванні", tasks.size());
 
         for (BukkitTask task : tasks) {
             Class<?> taskClass = getTaskClass(task);
 
             DataReport report = new DataReport("Task: #" + task.getTaskId());
-            report.append("Owner", task.getOwner().getName());
-            report.append("Runnable", taskClass != null ? taskClass.getName() : "<Unknown>");
-            report.append("Synchronous?", task.isSync());
+            report.append("Власник", task.getOwner().getName());
+            report.append("Виконуване", taskClass != null ? taskClass.getName() : "<Unknown>");
+            report.append("Синхронне?", task.isSync());
             append(report.getTitle(), report);
         }
     }
