@@ -325,7 +325,7 @@ public class BukkitWorldConfiguration extends YamlWorldConfiguration {
             EntityType creature = EntityTypes.get(creatureName.toLowerCase());
 
             if (creature == null) {
-                log.warning("Unknown entity type '" + creatureName + "'");
+                log.warning("Невідомий тип сутності '" + creatureName + "'");
             } else {
                 blockCreatureSpawn.add(creature);
             }
@@ -366,7 +366,7 @@ public class BukkitWorldConfiguration extends YamlWorldConfiguration {
             } else {
                 this.blacklist = blist;
                 if (summaryOnStart) {
-                    log.log(Level.INFO, "({0}) Blacklist loaded with {1} entries.",
+                    log.log(Level.INFO, "({0}) Чорний список завантажено з {1} записами.",
                             new Object[]{worldName, blacklist.getItemCount()});
                 }
 
