@@ -74,7 +74,7 @@ public final class WorldGuard {
 
     public void setup() {
         executorService = MoreExecutors.listeningDecorator(EvenMoreExecutors.newBoundedCachedThreadPool(0, 1, 20,
-                "WorldGuard Виконавець завдань - %s"));
+                "WorldGuard Task Executor - %s"));
 
         File cacheDir = new File(getPlatform().getConfigDir().toFile(), "cache");
         cacheDir.mkdirs();
@@ -98,7 +98,7 @@ public final class WorldGuard {
      * @return The platform
      */
     public WorldGuardPlatform getPlatform() {
-        checkNotNull(platform, "WorldGuard не ввімкнено, неможливо отримати доступ до платформи.");
+        checkNotNull(platform, "WorldGuard is not enabled, unable to access the platform.");
         return platform;
     }
 
@@ -188,7 +188,7 @@ public final class WorldGuard {
 
             List<Task<?>> tasks = supervisor.getTasks();
             if (!tasks.isEmpty()) {
-                StringBuilder builder = new StringBuilder("Known tasks:");
+                StringBuilder builder = new StringBuilder("Відомі задачі:");
                 for (Task<?> task : tasks) {
                     builder.append("\n");
                     builder.append(task.getName());
