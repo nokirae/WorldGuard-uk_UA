@@ -31,44 +31,44 @@ public class ServerReport extends DataReport {
 
         Server server = Bukkit.getServer();
 
-        append("Bukkit Version", server.getBukkitVersion());
-        append("Implementation", server.getName() + " " + server.getVersion());
-        append("Player Count", "%d/%d", Bukkit.getOnlinePlayers().size(), server.getMaxPlayers());
-        append("Server Class Source", server.getClass().getProtectionDomain().getCodeSource().getLocation());
+        append("Bukkit версія", server.getBukkitVersion());
+        append("Впровадження", server.getName() + " " + server.getVersion());
+        append("Кількість осіб", "%d/%d", Bukkit.getOnlinePlayers().size(), server.getMaxPlayers());
+        append("Джерело класу сервера", server.getClass().getProtectionDomain().getCodeSource().getLocation());
 
-        DataReport onlineMode = new DataReport("Online Mode");
-        onlineMode.append("enabled?", server.getOnlineMode());
+        DataReport onlineMode = new DataReport("Online режим");
+        onlineMode.append("увімкнено?", server.getOnlineMode());
         if (PaperLib.isSpigot()) {
-            onlineMode.append("BungeeCord support?", Bukkit.spigot().getConfig().getBoolean("settings.bungeecord", false));
+            onlineMode.append("BungeeCord підтримка?", Bukkit.spigot().getConfig().getBoolean("settings.bungeecord", false));
         }
         if (PaperLib.isPaper()) {
-            onlineMode.append("Velocity support?", Bukkit.spigot().getPaperConfig().getBoolean("proxies.velocity.enabled", false));
+            onlineMode.append("Velocity підтримка?", Bukkit.spigot().getPaperConfig().getBoolean("proxies.velocity.enabled", false));
         }
         append(onlineMode.getTitle(), onlineMode);
 
-        DataReport spawning = new DataReport("Spawning");
-        spawning.append("Ambient Spawn Limit", server.getAmbientSpawnLimit());
-        spawning.append("Animal Spawn Limit", server.getAnimalSpawnLimit());
-        spawning.append("Monster Spawn Limit", server.getMonsterSpawnLimit());
-        spawning.append("Ticks per Animal Spawn", server.getTicksPerAnimalSpawns());
-        spawning.append("Ticks per Monster Spawn", server.getTicksPerMonsterSpawns());
+        DataReport spawning = new DataReport("Спавн");
+        spawning.append("Обмеження появи в оточенні", server.getAmbientSpawnLimit());
+        spawning.append("Обмеження на появу тварин", server.getAnimalSpawnLimit());
+        spawning.append("Обмеження на появу монстрів", server.getMonsterSpawnLimit());
+        spawning.append("Тіків на спавн тварини", server.getTicksPerAnimalSpawns());
+        spawning.append("Тіків на спавн монстра", server.getTicksPerMonsterSpawns());
         append(spawning.getTitle(), spawning);
 
-        DataReport config = new DataReport("Configuration");
-        config.append("Nether Enabled?", server.getAllowNether());
-        config.append("The End Enabled?", server.getAllowEnd());
-        config.append("Generate Structures?", server.getGenerateStructures());
-        config.append("Flight Allowed?", server.getAllowFlight());
-        config.append("Connection Throttle", server.getConnectionThrottle());
-        config.append("Idle Timeout", server.getIdleTimeout());
-        config.append("Shutdown Message", server.getShutdownMessage());
-        config.append("Default Game Mode", server.getDefaultGameMode());
-        config.append("Main World Type", server.getWorldType());
-        config.append("View Distance", server.getViewDistance());
+        DataReport config = new DataReport("Конфігурація");
+        config.append("Пекло увімкнено?", server.getAllowNether());
+        config.append("Енд увімкнено?", server.getAllowEnd());
+        config.append("Генерація структур?", server.getGenerateStructures());
+        config.append("Політ дозволено?", server.getAllowFlight());
+        config.append("Регулятор підключення", server.getConnectionThrottle());
+        config.append("Час бездіяльності", server.getIdleTimeout());
+        config.append("Повідомлення про вимкнення", server.getShutdownMessage());
+        config.append("Стандартний режим гри", server.getDefaultGameMode());
+        config.append("Основний тип світу", server.getWorldType());
+        config.append("Дистанція огляду", server.getViewDistance());
         append(config.getTitle(), config);
 
-        DataReport protection = new DataReport("Protection");
-        protection.append("Spawn Radius", server.getSpawnRadius());
+        DataReport protection = new DataReport("Захист");
+        protection.append("Спавн радіус", server.getSpawnRadius());
         append(protection.getTitle(), protection);
     }
 
