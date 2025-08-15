@@ -30,23 +30,23 @@ public class PluginReport extends DataReport {
 
         Plugin[] plugins = Bukkit.getServer().getPluginManager().getPlugins();
 
-        append("Plugin Count", plugins.length);
+        append("Кількість плагінів", plugins.length);
 
         for (Plugin plugin : plugins) {
             DataReport report = new DataReport("Plugin: " + plugin.getName());
-            report.append("Enabled?", plugin.isEnabled());
-            report.append("Full Name", plugin.getDescription().getFullName());
-            report.append("Version", plugin.getDescription().getVersion());
-            report.append("Website", plugin.getDescription().getWebsite());
-            report.append("Description", plugin.getDescription().getDescription());
-            report.append("Authors", plugin.getDescription().getAuthors());
-            report.append("Load Before", plugin.getDescription().getLoadBefore());
-            report.append("Dependencies", plugin.getDescription().getDepend());
-            report.append("Soft Dependencies", plugin.getDescription().getSoftDepend());
-            report.append("Folder", plugin.getDataFolder().getAbsoluteFile());
-            report.append("Entry Point", plugin.getDescription().getMain());
-            report.append("Class", plugin.getClass().getName());
-            report.append("Class Source", plugin.getClass().getProtectionDomain().getCodeSource().getLocation());
+            report.append("Увімкнено?", plugin.isEnabled());
+            report.append("Повна назва", plugin.getDescription().getFullName());
+            report.append("Версія", plugin.getDescription().getVersion());
+            report.append("Веб-сторінка", plugin.getDescription().getWebsite());
+            report.append("Опис", plugin.getDescription().getDescription());
+            report.append("Автори", plugin.getDescription().getAuthors());
+            report.append("Завантажено раніше", plugin.getDescription().getLoadBefore());
+            report.append("Залежності", plugin.getDescription().getDepend());
+            report.append("М'які залежності", plugin.getDescription().getSoftDepend());
+            report.append("Директорія", plugin.getDataFolder().getAbsoluteFile());
+            report.append("Точка входу", plugin.getDescription().getMain());
+            report.append("Клас", plugin.getClass().getName());
+            report.append("Джерело класу", plugin.getClass().getProtectionDomain().getCodeSource().getLocation());
             append(report.getTitle(), report);
         }
     }
