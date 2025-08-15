@@ -216,7 +216,7 @@ public final class RegionCommands extends RegionCommandsBase {
 
         RegionAdder task = new RegionAdder(manager, region);
 
-        final String description = String.format("Updating region '%s'", region.getId());
+        final String description = String.format("Оновлення регіону '%s'", region.getId());
         AsyncCommandBuilder.wrap(task, sender)
                 .registerWithSupervisor(worldGuard.getSupervisor(), description)
                 .sendMessageAfterDelay("(Будь ласка, зачекайте... " + description + ")")
@@ -838,7 +838,7 @@ public final class RegionCommands extends RegionCommandsBase {
                 .registerWithSupervisor(WorldGuard.getInstance().getSupervisor(), description)
                 .sendMessageAfterDelay("Будь ласка, зачекайте... видалення регіону.")
                 .onSuccess((Component) null, removed -> sender.print(TextComponent.of(
-                        "Successfully removed " + removed.stream().map(ProtectedRegion::getId).collect(Collectors.joining(", ")) + ".",
+                        "Успішно видалено " + removed.stream().map(ProtectedRegion::getId).collect(Collectors.joining(", ")) + ".",
                         TextColor.LIGHT_PURPLE)))
                 .onFailure("Не вдалося видалити регіон", WorldGuard.getInstance().getExceptionConverter())
                 .buildAndExec(WorldGuard.getInstance().getExecutorService());
@@ -1279,9 +1279,9 @@ public final class RegionCommands extends RegionCommandsBase {
 
             Collections.sort(flagList);
 
-            final TextComponent.Builder builder = TextComponent.builder("Available flags: ");
+            final TextComponent.Builder builder = TextComponent.builder("Доступні прапори: ");
 
-            final HoverEvent clickToSet = HoverEvent.of(HoverEvent.Action.SHOW_TEXT, TextComponent.of("Click to set"));
+            final HoverEvent clickToSet = HoverEvent.of(HoverEvent.Action.SHOW_TEXT, TextComponent.of("Натисніть, щоб встановити"));
             for (int i = 0; i < flagList.size(); i++) {
                 String flag = flagList.get(i);
 
