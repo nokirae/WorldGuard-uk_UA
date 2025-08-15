@@ -35,41 +35,41 @@ public class WorldReport extends DataReport {
 
         List<World> worlds = Bukkit.getServer().getWorlds();
 
-        append("World Count", worlds.size());
+        append("Кількість світів", worlds.size());
 
         for (World world : worlds) {
-            DataReport report = new DataReport("World: " + world.getName());
+            DataReport report = new DataReport("Світ: " + world.getName());
             report.append("UUID", world.getUID());
-            report.append("World Type", world.getWorldType());
-            report.append("Environment", world.getEnvironment());
+            report.append("Тип світу", world.getWorldType());
+            report.append("Оточення", world.getEnvironment());
             ChunkGenerator generator = world.getGenerator();
-            report.append("Chunk Generator", generator != null ? generator.getClass().getName() : "<Default>");
+            report.append("Генератор чанків", generator != null ? generator.getClass().getName() : "<Default>");
 
             DataReport spawning = new DataReport("Spawning");
-            spawning.append("Animals?", world.getAllowAnimals());
-            spawning.append("Monsters?", world.getAllowMonsters());
-            spawning.append("Ambient Spawn Limit", world.getAmbientSpawnLimit());
-            spawning.append("Animal Spawn Limit", world.getAnimalSpawnLimit());
-            spawning.append("Monster Spawn Limit", world.getMonsterSpawnLimit());
-            spawning.append("Water Creature Spawn Limit", world.getWaterAnimalSpawnLimit());
+            spawning.append("Тварини?", world.getAllowAnimals());
+            spawning.append("Монстри?", world.getAllowMonsters());
+            spawning.append("Обмеження появи в оточенні", world.getAmbientSpawnLimit());
+            spawning.append("Обмеження появи тварин", world.getAnimalSpawnLimit());
+            spawning.append("Обмеження появи монстрів", world.getMonsterSpawnLimit());
+            spawning.append("Обмеження появи водних істот", world.getWaterAnimalSpawnLimit());
             report.append(spawning.getTitle(), spawning);
 
-            DataReport config = new DataReport("Configuration");
-            config.append("Difficulty", world.getDifficulty());
-            config.append("Max Height", world.getMaxHeight());
-            config.append("Sea Level", world.getSeaLevel());
+            DataReport config = new DataReport("Конфігурація");
+            config.append("Складність", world.getDifficulty());
+            config.append("Максимальна висота", world.getMaxHeight());
+            config.append("Рівень моря", world.getSeaLevel());
             report.append(config.getTitle(), config);
 
-            DataReport state = new DataReport("State");
-            state.append("Spawn Location", world.getSpawnLocation());
-            state.append("Full Time", world.getFullTime());
-            state.append("Weather Duration", world.getWeatherDuration());
-            state.append("Thunder Duration", world.getThunderDuration());
+            DataReport state = new DataReport("Стан");
+            state.append("Розміщення спавну", world.getSpawnLocation());
+            state.append("Повний час", world.getFullTime());
+            state.append("Тривалість погоди", world.getWeatherDuration());
+            state.append("Тривалість блискавки", world.getThunderDuration());
             report.append(state.getTitle(), state);
 
-            DataReport protection = new DataReport("Protection");
+            DataReport protection = new DataReport("Захист");
             protection.append("PVP?", world.getPVP());
-            protection.append("Game Rules", Arrays.stream(world.getGameRules())
+            protection.append("Ігрові правила", Arrays.stream(world.getGameRules())
                     .map(name -> name + "=" + world.getGameRuleValue(name))
                     .collect(Collectors.joining(", ")));
             report.append(protection.getTitle(), protection);
