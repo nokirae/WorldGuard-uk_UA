@@ -152,7 +152,7 @@ public final class Flags {
     @Deprecated
     public static final StringFlag TELE_MESSAGE = register(new StringFlag("teleport-message",
             LegacyComponentSerializer.INSTANCE.serialize(TextComponent.of("").append(TextComponent.of(
-                    "Teleported you to the region '%id%'.", TextColor.LIGHT_PURPLE)))));
+                    "Телепортовано вас у регіон '%id%'.", TextColor.LIGHT_PURPLE)))));
 
     // idk?
     public static final StateFlag INVINCIBILITY = register(new StateFlag("invincible", false));
