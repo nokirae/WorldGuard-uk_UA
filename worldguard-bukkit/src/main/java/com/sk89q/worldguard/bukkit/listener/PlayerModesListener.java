@@ -75,7 +75,7 @@ public class PlayerModesListener extends AbstractListener {
 
         if (hasAmphibiousGroup(player)) {
             if (WaterBreathing.set(localPlayer, session, true)) {
-                log.log(Level.INFO, "Увімкнено режим дихання під водою для " + player.getName() + " (player is in group 'wg-amphibious')");
+                log.log(Level.INFO, "Увімкнено режим дихання під водою для " + player.getName() + " (особа в групі 'wg-amphibious')");
             }
         }
     }
