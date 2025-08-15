@@ -279,7 +279,7 @@ public class DefaultDomain implements Domain, ChangeTracked {
         List<String> output = new ArrayList<>();
 
         for (String name : playerDomain.getPlayers()) {
-            output.add("особа:" + name);
+            output.add("name:" + name);
         }
 
         if (cache != null) {
@@ -311,7 +311,7 @@ public class DefaultDomain implements Domain, ChangeTracked {
     public String toGroupsString() {
         StringBuilder str = new StringBuilder();
         for (Iterator<String> it = groupDomain.getGroups().iterator(); it.hasNext(); ) {
-            str.append("г:");
+            str.append("g:");
             str.append(it.next());
             if (it.hasNext()) {
                 str.append(", ");
