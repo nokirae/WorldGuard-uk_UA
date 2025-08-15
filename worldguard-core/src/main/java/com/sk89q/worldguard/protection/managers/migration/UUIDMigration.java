@@ -76,14 +76,14 @@ public class UUIDMigration extends AbstractMigration {
 
     @Override
     protected void migrate(RegionDatabase store) throws MigrationException {
-        log.log(Level.INFO, "Migrating regions in '" + store.getName() + "' to convert names -> UUIDs...");
+        log.log(Level.INFO, "Міграція регіонів у '" + store.getName() + "' для перетворення імен -> UUID...");
 
         Set<ProtectedRegion> regions;
 
         try {
             regions = store.loadAll(flagRegistry);
         } catch (StorageException e) {
-            throw new MigrationException("Failed to load region data for the world '" + store.getName() + "'", e);
+            throw new MigrationException("Не вдалося завантажити дані про регіон для світу '" + store.getName() + "'", e);
         }
 
         migrate(regions);
@@ -91,7 +91,7 @@ public class UUIDMigration extends AbstractMigration {
         try {
             store.saveAll(regions);
         } catch (StorageException e) {
-            throw new MigrationException("Failed to save region data after migration of the world '" + store.getName() + "'", e);
+            throw new MigrationException("Не вдалося зберегти дані регіону після міграції світу '" + store.getName() + "'", e);
         }
     }
 
@@ -107,7 +107,7 @@ public class UUIDMigration extends AbstractMigration {
             try {
                 timer.schedule(task, LOG_DELAY, LOG_DELAY);
 
-                log.log(Level.INFO, "Resolving " + names.size() + " name(s) into UUIDs... this may take a while.");
+                log.log(Level.INFO, "Виправлення " + names.size() + " імен до UUID... це може зайняти деякий час.");
 
                 // Don't lookup names that we already looked up for previous
                 // worlds -- note: all names are lowercase in these collections
@@ -123,16 +123,16 @@ public class UUIDMigration extends AbstractMigration {
                     }
                 });
             } catch (IOException e) {
-                throw new MigrationException("The name -> UUID service failed", e);
+                throw new MigrationException("Імена -> UUID служба не змогла", e);
             } catch (InterruptedException e) {
-                throw new MigrationException("The migration was interrupted");
+                throw new MigrationException("Міграція була перервана");
             } finally {
                 // Stop showing the % converted messages
                 task.cancel();
             }
 
             // Name -> UUID in all regions
-            log.log(Level.INFO, "UUIDs resolved... now migrating all regions to UUIDs where possible...");
+            log.log(Level.INFO, "UUID виправлено... зараз переносимо всі регіони на UUID, де це можливо...");
             convert(regions);
 
             return true;
@@ -146,15 +146,15 @@ public class UUIDMigration extends AbstractMigration {
         if (!unresolvedNames.isEmpty()) {
             if (keepUnresolvedNames) {
                 log.log(Level.WARNING,
-                        "Some member and owner names do not seem to exist or own Minecraft so they " +
-                                "could not be converted into UUIDs. They have been left as names, but the conversion can " +
-                                "be re-run with 'keep-names-that-lack-uuids' set to false in the configuration in " +
-                                "order to remove these names. Leaving the names means that someone can register with one of " +
-                                "these names in the future and become that player.");
+                        "Деякі імена учасників та власників, здається, не існують або не належать Minecraft, тому вони " +
+                                "не можуть бути перетворені на UUID. Вони залишилися як імена, але перетворення можна " +
+                                "повторно запустити з 'keep-names-that-lack-uuids' встановлено на false в конфігурації в " +
+                                "порядку видалення цих імен. Залишення імен означає, що хтось може зареєструватися одним з " +
+                                "цих імен в майбутньому і стати цією особою.");
             } else {
                 log.log(Level.WARNING,
-                        "Some member and owner names do not seem to exist or own Minecraft so they " +
-                                "could not be converted into UUIDs. These names have been removed.");
+                        "Деякі імена учасників та власників, здається, не існують або не належать Minecraft, тому вони " +
+                                "не можуть бути перетворені на UUID. Ці імена були видалені.");
             }
         }
     }
@@ -239,7 +239,7 @@ public class UUIDMigration extends AbstractMigration {
     private class ResolvedNamesTimerTask extends TimerTask {
         @Override
         public void run() {
-            log.info("UUIDs have been found for " + resolvedNames.size() + " name(s)...");
+            log.info("UUID було знайдено для " + resolvedNames.size() + " імен...");
         }
     }
 
