@@ -69,7 +69,7 @@ class RegionInserter {
             // Nothing special to do about them
 
         } else {
-            throw new IllegalArgumentException("Unknown type of region: " + region.getClass().getName());
+            throw new IllegalArgumentException("Невідомий тип регіону: " + region.getClass().getName());
         }
     }
 
