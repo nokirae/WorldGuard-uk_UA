@@ -38,13 +38,13 @@ public class SetFlag<T> extends Flag<Set<T>> {
 
     public SetFlag(String name, RegionGroup defaultGroup, Flag<T> subFlag) {
         super(name, defaultGroup);
-        requireNonNull(subFlag, "SubFlag не може бути null.");
+        requireNonNull(subFlag, "SubFlag cannot be null.");
         this.subFlag = subFlag;
     }
 
     public SetFlag(String name, Flag<T> subFlag) {
         super(name);
-        requireNonNull(subFlag, "SubFlag не може бути null.");
+        requireNonNull(subFlag, "SubFlag cannot be null.");
         this.subFlag = subFlag;
     }
 
