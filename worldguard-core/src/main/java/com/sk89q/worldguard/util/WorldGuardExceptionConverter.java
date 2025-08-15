@@ -37,7 +37,7 @@ import java.util.regex.Pattern;
 
 public class WorldGuardExceptionConverter extends ExceptionConverterHelper {
 
-    private static final Pattern numberFormat = Pattern.compile("^Для вводу рядка: \"(.*)\"$");
+    private static final Pattern numberFormat = Pattern.compile("^For input string: \"(.*)\"$");
 
     private CommandException newCommandException(String message, Throwable cause) {
         return new CommandException(message, cause);
