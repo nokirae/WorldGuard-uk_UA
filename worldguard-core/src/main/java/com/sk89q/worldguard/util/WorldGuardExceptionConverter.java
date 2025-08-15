@@ -48,7 +48,7 @@ public class WorldGuardExceptionConverter extends ExceptionConverterHelper {
         final Matcher matcher = numberFormat.matcher(e.getMessage());
 
         if (matcher.matches()) {
-            throw newCommandException("Очікуваламь цифра; рядок \"" + matcher.group(1)
+            throw newCommandException("Очікувалась цифра; рядок \"" + matcher.group(1)
                     + "\" given.", e);
         } else {
             throw newCommandException("Очікуваламь цифра; наданий рядок.", e);
