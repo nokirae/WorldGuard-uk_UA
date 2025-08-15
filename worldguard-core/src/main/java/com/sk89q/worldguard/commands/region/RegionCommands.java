@@ -494,9 +494,9 @@ public final class RegionCommands extends RegionCommandsBase {
         }
 
         AsyncCommandBuilder.wrap(task, sender)
-                .registerWithSupervisor(WorldGuard.getInstance().getSupervisor(), "Отримання списку регіонів")
+                .registerWithSupervisor(WorldGuard.getInstance().getSupervisor(), "Getting region list")
                 .sendMessageAfterDelay("(Будь ласка, зачекайте... завантаження списку регіонів...)")
-                .onFailure("Failed to fetch region list", WorldGuard.getInstance().getExceptionConverter())
+                .onFailure("Не вдалося завантажити список регіонів", WorldGuard.getInstance().getExceptionConverter())
                 .buildAndExec(WorldGuard.getInstance().getExecutorService());
     }
 
@@ -642,7 +642,7 @@ public final class RegionCommands extends RegionCommandsBase {
             sendFlagHelper(sender, world, existing, permModel, page);
         } else {
             RegionPrintoutBuilder printout = new RegionPrintoutBuilder(world.getName(), existing, null, sender);
-            printout.append(SubtleFormat.wrap("(Current flags: "));
+            printout.append(SubtleFormat.wrap("(Поточні прапори: "));
             printout.appendFlagsList(false);
             printout.append(SubtleFormat.wrap(")"));
             printout.send(sender);
@@ -896,7 +896,7 @@ public final class RegionCommands extends RegionCommandsBase {
             }
 
             AsyncCommandBuilder.wrap(new RegionManagerLoader(managers), sender)
-                    .registerWithSupervisor(worldGuard.getSupervisor(), "Завантаження регіонів для всіх світів")
+                    .registerWithSupervisor(worldGuard.getSupervisor(), "Loading regions for all worlds")
                     .sendMessageAfterDelay("(Будь ласка, зачекайте... завантаження даних регіону для всіх світів...)")
                     .onSuccess("Успішно завантажити дані регіону для всіх світів.", null)
                     .onFailure("Не вдалося завантажити регіони для всіх світів", worldGuard.getExceptionConverter())
@@ -957,7 +957,7 @@ public final class RegionCommands extends RegionCommandsBase {
             }
 
             AsyncCommandBuilder.wrap(new RegionManagerSaver(managers), sender)
-                    .registerWithSupervisor(worldGuard.getSupervisor(), "Збереження регіонів для всіх світів")
+                    .registerWithSupervisor(worldGuard.getSupervisor(), "Saving regions for all worlds")
                     .sendMessageAfterDelay("Будь ласка, зачекайте... збереження даних регіону для всіх світів...)")
                     .onSuccess("Успішно збережено дані регіону для всіх світів.", null)
                     .onFailure("Не вдалося зберегти регіони для всіх світів", worldGuard.getExceptionConverter())
@@ -1027,7 +1027,7 @@ public final class RegionCommands extends RegionCommandsBase {
 
         try {
             RegionContainer container = WorldGuard.getInstance().getPlatform().getRegionContainer();
-            sender.print("Now performing migration... this may take a while.");
+            sender.print("Зараз виконується міграція... це може зайняти деякий час.");
             container.migrate(migration);
             sender.print(
                     "Міграція завершена! Було перенесено тільки дані. Якщо ви вже змінили налаштування для використання " +
