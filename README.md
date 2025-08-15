@@ -20,10 +20,10 @@ General Public License v3.
 
 A Bukkit server implementation (such as [Paper](https://papermc.io)) and the [WorldEdit plugin](https://dev.bukkit.org/projects/worldedit) are required to use WorldGuard. You can get a release copy of WorldGuard from the [BukkitDev site](https://dev.bukkit.org/projects/worldguard).
 
-Compiling
+Компіляція
 ---------
 
-See [COMPILING.md](COMPILING.md).
+Дивіться [COMPILING.md](COMPILING.md).
 
 Contributing
 ------------
